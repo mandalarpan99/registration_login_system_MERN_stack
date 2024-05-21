@@ -75,8 +75,19 @@ nav li a {
   text-decoration: none;
 }
 
+/* Service card */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20vw;
+  border: 2px solid #f0f0f5;
+}
 
-
+.card-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

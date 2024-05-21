@@ -1,5 +1,5 @@
 const express = require("express");
-const serviceData = require("../model/contact-model");
+const serviceData = require("../model/service-model");
 
 const Service = async (req, res)=>{
     try {
