@@ -3,7 +3,7 @@ const errorMiddleware = (err, req, res, next)=>{
     const message = err.message || "Back-end Error";
     const extraDetails = err.extraDetails || "Server not reacheble";
 
-    return res.status(status).json(message).json(extraDetails);
+    return res.status(status).json({message,extraDetails});
 
 }
 

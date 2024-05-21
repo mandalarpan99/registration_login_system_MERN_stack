@@ -30,9 +30,9 @@ export const Login = ()=>{
             },
             body: JSON.stringify(user)
         });
-        console.log(response);
+        //console.log(response);
+        const res_data = await response.json();
         if(response.ok){
-            const res_data = await response.json();
             console.log(res_data);
             storeTokenInLS(res_data.token);
             alert("Login successful")
@@ -40,8 +40,8 @@ export const Login = ()=>{
             navigate("/login");
 
         }else{
-            alert("Invalid credential");
-            console.log("Login form");
+            alert(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+            //alert("Invalid credential");
         }
     }
     return <>

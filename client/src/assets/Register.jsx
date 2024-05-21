@@ -33,14 +33,17 @@ export const Register = ()=>{
             },
             body: JSON.stringify(user),
         });
+        console.log(response);
+        const res_data = await response.json();
+        console.log("response from server", res_data.extraDetails);
         if(response.ok){
-            const res_data = await response.json();
-            console.log("response from server", res_data);
+            
             storeTokenInLS(res_data.token);
             setUser({username:"", email:"", password:"",});
             navigate('/registration');
+        }else{
+            alert(res_data.extraDetails ? res_data.extraDetails : res_data.message);
         }
-        console.log(response);
     } catch (error) {
             console.log("Registration", error)
     }

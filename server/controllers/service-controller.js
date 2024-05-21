@@ -4,6 +4,7 @@ const serviceData = require("../model/service-model");
 const Service = async (req, res)=>{
     try {
         const response = await serviceData.find();
+        //console.log("Response from server for service ", response);
         if(!response){
             res.status(400).json({msg: "Data not found"});
         }

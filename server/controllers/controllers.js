@@ -17,14 +17,14 @@ const home = async (req,res)=>{
 //User registration
 //------------------------
 
-const register = async (req,res)=>{
+const register = async (req,res,next)=>{
     try {
         console.log(req.body);
         const {username, email, password} = req.body;
         const userExits = await UserData.findOne({email: email});
         if(userExits){
-            return res.status(200)
-            .json({msg: "Email alredy exits"});
+            return res.status(400)
+            .json({message: "Email alredy exits"});
         }
         const data = await UserData.create({username, email, password});
         res.status(201).json({
@@ -33,7 +33,8 @@ const register = async (req,res)=>{
             userId: data._id.toString()
         })
     } catch (error) {
-    res.status(400).json({msg:"Page not found"});
+        //res.status(400).json({msg:"Page not found"});
+        next(error);
     }
     
 }
